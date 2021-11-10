@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274541720744",
+    "project_id": "injuggile-38d09",
+    "storage_bucket": "injuggile-38d09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274541720744:android:ef5ccdde2d6f02f5d47e9d",
+        "android_client_info": {
+          "package_name": "com.digitalraiz.injuggileIndia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274541720744-7q38cs8ad0ot2p2n37b7na8pl07trg2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0zpIVee47uQTLdSSsD7QVP6KG40a8F4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274541720744-7q38cs8ad0ot2p2n37b7na8pl07trg2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
