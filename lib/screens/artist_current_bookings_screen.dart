@@ -7,10 +7,10 @@ import 'package:provider/provider.dart';
 import 'package:service_app/providers/auth.dart';
 import 'package:service_app/providers/jobs_provider.dart';
 import 'package:service_app/screens/widgets/custom_drawer.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 
 class ArtistCurrentBookingsScreen extends StatefulWidget {
   static const routeName = '/artist-current-bookings-screen';
+
   const ArtistCurrentBookingsScreen({Key key}) : super(key: key);
 
   @override
@@ -22,15 +22,24 @@ class _ArtistCurrentBookingsScreenState
     extends State<ArtistCurrentBookingsScreen> {
   String time = '00.00.00';
   bool isInit = true;
-   StopWatchTimer _stopWatchTimer = StopWatchTimer(isLapHours: true);
-  final stopwatchViewModel = DPStopwatchViewModel(
+
+  final DPStopwatchViewModel stopwatchViewModel = DPStopwatchViewModel(
     clockTextStyle: const TextStyle(
-      color: Colors.black,
-      fontSize: 32,
+      color: Colors.lightBlueAccent,
+      fontSize: 22,
     ),
   );
 
+  @override
+  void initState() {
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      timer.cancel();
+      stopwatchViewModel?.start?.call();
+    });
 
+    super.initState();
+
+  }
 
   @override
   void didChangeDependencies() {
@@ -43,36 +52,20 @@ class _ArtistCurrentBookingsScreenState
         });
       });
     }
+    stopwatchViewModel.resume?.call();
     super.didChangeDependencies();
-  }
-
-
-  @override
-  void initState() {
-    stopwatchViewModel?.start?.call();
-
-    super.initState();
-/*    _stopWatchTimer.secondTime..listen((value) {
-      setState(() {
-        time = '${StopWatchTimer.getDisplayTime(value, milliSecond: false)}';
-        print(time);
-      });
-    });*/
-
-
-
-
-
   }
 
   @override
   void dispose() async {
     super.dispose();
-    await _stopWatchTimer.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
+
+
     final booking = Provider.of<JobProvider>(context).currentBooking;
     final user = Provider.of<Auth>(context).currentUser;
     final appBar = AppBar(
@@ -87,18 +80,6 @@ class _ArtistCurrentBookingsScreenState
       title: Text('Current Booking'),
       centerTitle: true,
     );
-
-
-
-    if (booking.startTime != null) {
-      _stopWatchTimer.setPresetTime(
-          mSec: DateTime.now()
-              .difference(DateTime.fromMillisecondsSinceEpoch(
-                  int.parse(booking.startTime) * 1000))
-              .inMilliseconds);
-
-      _stopWatchTimer.onExecute.add(StopWatchExecute.start);
-    }
 
     _buildGoogleMap(BuildContext ctx) {
       return Container(
@@ -177,17 +158,6 @@ class _ArtistCurrentBookingsScreenState
                           fontSize: 16,
                         ),
                   ),
-
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(fontSize: 20),
-                    ),
-                    onPressed: () {
-                      stopwatchViewModel.start?.call();
-                    },
-                    child: const Text('start'),
-                  ),
-
                   Padding(
                     padding: EdgeInsets.only(right: 4.0),
                     child: CircleAvatar(
@@ -259,34 +229,27 @@ class _ArtistCurrentBookingsScreenState
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 4.0),
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          WidgetSpan(
-                            child: Icon(
-                              Icons.timelapse,
-                              size: 24,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          TextSpan(
-                            text: ' $time',
-                            style:
-                                Theme.of(context).textTheme.headline6.copyWith(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 20,
-                                    ),
-                          ),
-                        ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.timelapse,
+                        size: 24,
+                        color: Theme.of(context).primaryColor,
                       ),
-                    ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      DPStopWatchWidget(
+                        stopwatchViewModel,
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
                     child: GestureDetector(
                       onTap: () {
+                        this.stopwatchViewModel.stop.call();
                         Provider.of<JobProvider>(
                           context,
                           listen: false,

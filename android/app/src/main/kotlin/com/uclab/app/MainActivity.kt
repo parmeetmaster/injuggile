@@ -1,4 +1,4 @@
-package com.digitalraiz.injuggileIndia
+package com.digitalraiz.injuggile
 
 import io.flutter.embedding.android.FlutterActivity
 

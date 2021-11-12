@@ -7,9 +7,67 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:274541720744:android:75fd7aac4b16c1f2d47e9d",
+        "android_client_info": {
+          "package_name": "com.digitalraiz.injuggile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274541720744-7q38cs8ad0ot2p2n37b7na8pl07trg2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0zpIVee47uQTLdSSsD7QVP6KG40a8F4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274541720744-7q38cs8ad0ot2p2n37b7na8pl07trg2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274541720744:android:cb73ed7ad6967605d47e9d",
+        "android_client_info": {
+          "package_name": "com.digitalraiz.injuggleIndia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274541720744-7q38cs8ad0ot2p2n37b7na8pl07trg2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0zpIVee47uQTLdSSsD7QVP6KG40a8F4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274541720744-7q38cs8ad0ot2p2n37b7na8pl07trg2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:274541720744:android:ef5ccdde2d6f02f5d47e9d",
         "android_client_info": {
-          "package_name": "com.digitalraiz.injuggileIndia"
+          "package_name": "com.example.injuggile"
         }
       },
       "oauth_client": [

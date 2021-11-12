@@ -29,7 +29,7 @@ class _TermsScreenState extends State<TermsScreen> {
         ),
       ),
       body: WebView(
-        initialUrl: 'https://project.cander.in/flutter_service/Webservice/term',
+        initialUrl: 'https://injuggle.com/terms-conditions.php',
       ),
     );
   }
